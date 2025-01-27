@@ -115,6 +115,10 @@ const EmployeeDetails = ({ idd }: EmployeeDetailsParams) => {
                 <p className="mb-2">
                   <strong>Package:</strong> ${(employee.salary*12).toFixed(2)}
                 </p>
+                <p className="mb-2">
+                  <strong>Position :</strong>{employee.position}
+                 
+                </p>
               </div>
               <div>
                 <p className="mb-2">
