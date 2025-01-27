@@ -8,6 +8,7 @@ import { SetRole } from "../redux/role/roleSlice.ts";
 const LoginForm: React.FC = () => {
   const ServerUrl = import.meta.env.VITE_ServerUrl
   console.log(ServerUrl)
+  const endpoint = `${ServerUrl}/auth/login`;
   const dispatch = useDispatch();
   const Role = useSelector((state: any) => state.role.value);
   console.log(Role);
@@ -25,7 +26,7 @@ const LoginForm: React.FC = () => {
     const values = { email, password, role };
     console.log("Values", values, "Values");
     await axios
-      .post(`${ServerUrl}/auth/login`, values)
+      .post(endpoint, values)
       .then((res) => {
         console.log(res);
         if (res.data.success) {
