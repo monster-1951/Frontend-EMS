@@ -12,6 +12,7 @@ interface Employee {
   name: string;
   email: string;
   role: "Admin" | "Employee";
+  position: string;
   salary: number;
   attendance: Attendance[];
 }
@@ -22,15 +23,15 @@ interface Attendance {
 }
 
 const AdminDashboard = () => {
-  const ServerUrl = import.meta.env.VITE_ServerUrl
-  console.log(ServerUrl)
+  const ServerUrl = import.meta.env.VITE_ServerUrl;
+  console.log(ServerUrl);
   const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(
     null
   );
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [deleete,setDeleete] = useState<number>(0)
+  const [deleete, setDeleete] = useState<number>(0);
   useEffect(() => {
     const fetchEmployees = async () => {
       try {
@@ -82,11 +83,6 @@ const AdminDashboard = () => {
 
     console.log(response);
   };
-
-
-  
-  
-  
 
   return (
     <div className="min-h-screen bg-gray-900 text-white flex flex-col">
@@ -147,9 +143,12 @@ const AdminDashboard = () => {
                         {employee.name}
                       </button>
                     </td>
-                    <td className="py-2 px-4 border-b">{employee.role}</td>
                     <td className="py-2 px-4 border-b">
-                      ${(employee.salary*12).toFixed(2)}
+                      {employee.position}
+                      {employee.role === "Admin" && `(${employee.role})`}
+                    </td>
+                    <td className="py-2 px-4 border-b">
+                      ${(employee.salary * 12).toFixed(2)}
                     </td>
                     <td className="py-2 px-4 border-b">
                       {calculateAttendance(employee.attendance)}%
@@ -182,11 +181,7 @@ const AdminDashboard = () => {
           onCancel={() => setSelectedEmployee(null)}
         />
       )}
-    {
-      deleete>0 && (
-        <DeleteDialog id={deleete}/>
-      )
-    }
+      {deleete > 0 && <DeleteDialog id={deleete} />}
       {/* Footer */}
       <footer className="bg-gray-800 text-white py-4 text-center">
         &copy; {new Date().getFullYear()} Employee Management System

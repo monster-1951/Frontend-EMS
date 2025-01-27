@@ -10,6 +10,7 @@ interface Employee {
   id: number;
   name: string;
   email: string;
+  position: string;
   role: "Admin" | "Employee";
   salary: number;
   attendance: Attendance[];
@@ -134,6 +135,20 @@ const EditEmployeeForm: React.FC<EditEmployeeFormProps> = ({
               <option value="Employee">Employee</option>
             </select>
           </div>
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-sm font-medium mb-1">
+              Position
+            </label>
+            <input
+              type="text"
+              id="position"
+              value={formData.position}
+              onChange={handleChange}
+              required
+              name="position"
+              className="w-full p-2 border rounded bg-gray-700 focus:outline-none"
+            />
+          </div>
 
           <div className="mb-4">
             <label className="block font-medium mb-1">Salary</label>
@@ -150,7 +165,10 @@ const EditEmployeeForm: React.FC<EditEmployeeFormProps> = ({
             <label className="block font-medium mb-1">Attendance</label>
             <div className="h-32 overflow-y-scroll inset-shadow-sm inset-shadow-black py-3 px-2 flex flex-col  justify-between">
               {formData.attendance.map((record, index) => (
-                <div key={index} className="flex justify-between items-center mb-2  ">
+                <div
+                  key={index}
+                  className="flex justify-between items-center mb-2  "
+                >
                   <input
                     type="date"
                     value={record.date}

@@ -12,6 +12,7 @@ const CreateEmployeeForm: React.FC<EmployeeFormProps> = ({ onSuccess }) => {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [position, setPosition] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [role, setRole] = useState<string>("Employee");
   const [salary, setSalary] = useState<number | "">("");
@@ -34,6 +35,7 @@ const CreateEmployeeForm: React.FC<EmployeeFormProps> = ({ onSuccess }) => {
       password,
       role,
       salary,
+      position
     };
 
     try {
@@ -133,6 +135,19 @@ const CreateEmployeeForm: React.FC<EmployeeFormProps> = ({ onSuccess }) => {
               id="confirmPassword"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+              className="w-full p-2 border rounded bg-gray-700 focus:outline-none"
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-sm font-medium mb-1">
+              Position
+            </label>
+            <input
+              type="text"
+              id="position"
+              value={position}
+              onChange={(e) => setPosition(e.target.value)}
               required
               className="w-full p-2 border rounded bg-gray-700 focus:outline-none"
             />

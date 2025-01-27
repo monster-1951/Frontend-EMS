@@ -14,6 +14,7 @@ type Employee = {
   id: number;
   name: string;
   role: "Admin" | "Employee";
+  position:string;
   salary: number;
   attendance: Attendance[];
   email: string;
