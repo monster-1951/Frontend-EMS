@@ -22,11 +22,11 @@ const DashBoard = () => {
     );
   } else {
     window.location.href = '/login'
-    return (
-      <div className="min-h-screen bg-gray-900 text-white flex justify-center items-center">
-        <h1 className="text-3xl font-semibold">Access Denied</h1>
-      </div>
-    );
+    // return (
+    //   <div className="min-h-screen bg-gray-900 text-white flex justify-center items-center">
+    //     <h1 className="text-3xl font-semibold">Access Denied</h1>
+    //   </div>
+    // );
   }
 };
 
