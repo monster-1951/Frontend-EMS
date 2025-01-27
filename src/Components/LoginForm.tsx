@@ -7,6 +7,7 @@ import { SetRole } from "../redux/role/roleSlice.ts";
 
 const LoginForm: React.FC = () => {
   const ServerUrl = import.meta.env.VITE_ServerUrl
+  console.log(ServerUrl)
   const dispatch = useDispatch();
   const Role = useSelector((state: any) => state.role.value);
   console.log(Role);
